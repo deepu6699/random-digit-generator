@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Generator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://c4.wallpaperflare.com/wallpaper/56/382/435/anime-one-piece-portgas-d-ace-wallpaper-preview.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background for contrast */
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .input-box {
+      margin: 10px 0;
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: darkblue;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 24px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <input type="number" id="minValue" class="input-box" placeholder="Enter minimum value">
+    <input type="number" id="maxValue" class="input-box" placeholder="Enter maximum value">
+    <button class="btn" onclick="generateRandomNumber()">Generate Random Number</button>
+    
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function generateRandomNumber() {
+      const minValue = parseInt(document.getElementById('minValue').value);
+      const maxValue = parseInt(document.getElementById('maxValue').value);
+      const resultElement = document.getElementById('result');
+
+      // Validate that the inputs are correct and min is less than max
+      if (isNaN(minValue) || isNaN(maxValue) || minValue >= maxValue) {
+        resultElement.textContent = "Please enter valid values.";
+        resultElement.style.color = 'red';
+        return;
+      }
+
+      // Generate a random number between min and max
+      const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+      resultElement.textContent = `Random Number: ${randomNumber}`;
+      resultElement.style.color = 'green';
+    }
+  </script>
+
+</body>
+</html>
